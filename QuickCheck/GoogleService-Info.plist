@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAZO_EjuXmFaH2Jl5JPeHDQ6PJaojY61LY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>873992533637</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>cs5520-ios-project.Team15</string>
+	<key>PROJECT_ID</key>
+	<string>cs5520-ios-project</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cs5520-ios-project.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:873992533637:ios:6a11041e54371a77e45bec</string>
+	<key>DATABASE_URL</key>
+	<string>https://cs5520-ios-project-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

@@ -65,15 +65,11 @@
 		};
 		AEE1279C2CFCE1DC0071EC67 /* QuickCheckTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = QuickCheckTests;
 			sourceTree = "<group>";
 		};
 		AEE127A62CFCE1DC0071EC67 /* QuickCheckUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = QuickCheckUITests;
 			sourceTree = "<group>";
 		};
@@ -127,7 +123,6 @@
 				9777F5EF0F2B2FE02C30E131 /* Pods-QuickCheckUITests.debug.xcconfig */,
 				1ACB815BF70F3D5847B9680C /* Pods-QuickCheckUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
