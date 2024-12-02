@@ -32,60 +32,36 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.collectionView!.register(myCustomCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        
-        view.backgroundColor = UIColor.black
-        
-        
-        
+        view.backgroundColor = UIColor.white
         // If user is not logged in
         if Auth.auth().currentUser?.uid == nil {
             perform(#selector(logoutPressed), with: nil, afterDelay: 0)
         }
-        
         //  if user is logged in
-        else{
-            // First getting the data from the cloud
-            //            getUserDetails()
-            
-            
-            // Navigation bar setup
+        else
+        {
             self.navigationItem.title = "My Classes"
-//            
-//            self.navigationController?.navigationBar.tintColor = UIColor.white
-//            self.navigationController?.navigationBar.barStyle = UIBarStyle.blackTranslucent
-//            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-            
-            //[NSForegroundColorAttributeName: UIColor.orange]
-            
-            
             let addClassButton : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAddClass))
-            
             let logoutButton : UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "logout_icon"), style: .plain, target: self, action: #selector(logoutPressed))
-            
             self.navigationItem.leftBarButtonItem = logoutButton
             self.navigationItem.rightBarButtonItem = addClassButton
-            
         }
-        
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
         if Auth.auth().currentUser?.uid != nil {
             getUserDetails()
         }
-        
     }
     
     func getUserDetails(){
         let userId = Auth.auth().currentUser?.uid
         let ref : DatabaseReference = Database.database().reference()
         ref.observeSingleEvent(of: .value, with: {(snapshot) in
-            
+        
             var userType = ""
             if(snapshot.childSnapshot(forPath: "tutors").hasChild(userId!)){
                 userType = "tutors"
@@ -139,21 +115,18 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
     
     // For students to add new class using id
     func addClassUsingIdForStudents(){
-        // Create the alert controller.
+        
         let alert = UIAlertController(title: "Add New Class", message: "Please provide a valid code provided by your tutor of the class you wish to enroll.", preferredStyle: .alert)
         
-        // Add the text field. You can configure it however you need.
         alert.addTextField(configurationHandler: { (textField) -> Void in
             textField.placeholder = "Class Code"
         })
         
-        // Grab the value from the text field, and print it when the user clicks OK.
         alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak alert] (action) -> Void in
             let textField = (alert?.textFields![0])! as UITextField
             let givenClassId = textField.text
             if !(givenClassId?.isEmpty)!{
                 
-                // Check if has invalid Character
                 if (givenClassId?.hasInvalidCharacters())!{
                     self.showAlert(AlertTitle: "Enrollment failed", Message: "Class Code has invalid characters.")
                 }
@@ -166,7 +139,6 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
             }
         }))
         
-        // Present the alert.
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -184,15 +156,12 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
             let classesSnapshot : DataSnapshot = snapshot.childSnapshot(forPath: "classes")
             let currentClassSnapshot : DataSnapshot = classesSnapshot.childSnapshot(forPath: givenClassId)
             
-            
-            // Checking for valid class id
             if classesSnapshot.hasChild(givenClassId){
                 // Class id is valid
                 
                 if givenClassId == "default"{
                     
                 }
-                
                 else if currentClassSnapshot.hasChild(studentId){
                     // Student already enrolled
                     self.showAlert(AlertTitle: "Enrollment failed", Message: "You already enrolled to this class!")
@@ -201,16 +170,13 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
                 else{
                     // New enrollment.. Add student to class
                     ref.child("classes").child(givenClassId).child("students").child(studentId).setValue("0")
-                    
                     // Add this class to the students class list
                     ref.child("students").child(studentId).child("my_classes").child(givenClassId).setValue("0")
-                    
                     // Reload the classes List
                     self.populateMyClassesList()
                 }
                 
             }
-            
             else{
                 // Invalid class Id
                 self.showAlert(AlertTitle: "Invalid Class Code", Message: "The class code that you entered is invalid. Please make sure you use a valid Class Code to enroll into the class.")
@@ -234,12 +200,9 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
     @objc func logoutPressed() {
         // Show the alert with a confirmation action for logging out
         self.showLogoutAlert(AlertTitle: "Log Out", Message: "Are you sure you want to log out?", confirmAction:  {
-            // This closure gets called if the user confirms the log out
             
-            // Remove the user token and synchronize UserDefaults
             UserDefaults.standard.removeObject(forKey: "userToken")
             UserDefaults.standard.synchronize()
-
             // Sign out the user from Firebase
             do {
                 try Auth.auth().signOut()  // Sign out from Firebase
@@ -290,9 +253,7 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
         let tabBarController : TabBarController = TabBarController()
         
         let details = UIViewController.BasicDetails(UserName: CurrentUserDetails.UserName, UserID: CurrentUserDetails.UserID, UserType: CurrentUserDetails.UserType, ClassID: MyClassList[indexPath.row].ClassID, ClassName: MyClassList[indexPath.row].ClassName, PosterURL: MyClassList[indexPath.row].PosterURL)
-        
-//        tabBarController.CurrentDetails = details
-        
+
         self.navigationController?.pushViewController(tabBarController, animated: true)
         
     }
@@ -337,41 +298,29 @@ class myCustomCell : UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-//        backgroundColor = UIColor.red
-        
-        // Setting up the background image
         addSubview(myImage)
         myImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         myImage.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         myImage.heightAnchor.constraint(equalToConstant: 200).isActive = true
         myImage.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        
-        // Setting the baseView
+       
         addSubview(baseView)
-//        baseView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         baseView.leftAnchor.constraint(equalTo: leftAnchor, constant: 22).isActive = true
         baseView.rightAnchor.constraint(equalTo: rightAnchor, constant: -9).isActive = true
         baseView.topAnchor.constraint(equalTo: topAnchor, constant: 25).isActive = true
         baseView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -11).isActive = true
         
-        
-        // Setting the poster ImageView
         addSubview(posterImageView)
         posterImageView.centerXAnchor.constraint(equalTo: baseView.centerXAnchor).isActive = true
         posterImageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         posterImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
         posterImageView.topAnchor.constraint(equalTo: baseView.topAnchor, constant: 5).isActive = true
 
-        // Setting the class name label
         addSubview(classNameLabel)
         classNameLabel.centerXAnchor.constraint(equalTo: baseView.centerXAnchor).isActive = true
         classNameLabel.topAnchor.constraint(equalTo: posterImageView.bottomAnchor).isActive = true
         classNameLabel.leftAnchor.constraint(equalTo: baseView.leftAnchor, constant: 4).isActive = true
         classNameLabel.rightAnchor.constraint(equalTo: baseView.rightAnchor, constant: -4).isActive = true
-        
-        
-
     }
     
     required init?(coder aDecoder: NSCoder) {
