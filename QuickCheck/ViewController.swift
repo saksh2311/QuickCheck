@@ -59,21 +59,17 @@ class ViewController: UIViewController {
     
     
     // Todo if successfully logged in
-    func goToNextPage(){
-        // Dismiss current page
-//        self.dismiss(animated: false, completion: nil)
+    func goToNextPage() {
+        // Initialize the layout
+        let layout = UICollectionViewFlowLayout() // You can customize the layout as needed
         
-        // Reload the master details page
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        let layout = UICollectionViewFlowLayout()
-        let customCollectionView = MyClassesViewController(collectionViewLayout: layout)
-        window?.rootViewController = UINavigationController(rootViewController: customCollectionView)
-
-//        window?.rootViewController = UINavigationController(rootViewController: MyClassesTableViewController())
-//        window?.rootViewController = MyClassesTableViewController()
+        // Initialize the next view controller with the layout
+        let nextController = MyClassesViewController(collectionViewLayout: layout)
         
+        // Push the view controller to the navigation stack
+        self.navigationController?.pushViewController(nextController, animated: true)
     }
+
     
     // Checking for errors in user input..
     func checkUserInput() -> Bool{
@@ -122,10 +118,13 @@ class ViewController: UIViewController {
         setUserTypeButtons()
     }
     
-    @objc func handleRegister(){
+    @objc func handleRegister() {
         print("Register pressed")
         let registrationPage = RegistrationController()
-        present(registrationPage, animated : true, completion : nil)
+
+        // Wrap RegistrationController in a UINavigationController
+        let navigationController = UINavigationController(rootViewController: registrationPage)
+        self.present(navigationController, animated: true, completion: nil)
     }
     
     
@@ -394,9 +393,6 @@ class ViewController: UIViewController {
         view.setTitleColor(UIColor.green, for: .normal)
         return view
     }()
-    
-
-
     
     
     func setupViews(){

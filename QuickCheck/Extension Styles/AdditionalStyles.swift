@@ -66,3 +66,39 @@ extension UIView {
         layer.add(animation, forKey: CATransitionType.fade.rawValue)
     }
 }
+
+extension String
+{
+    func toMyDate() -> Date
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MMM/dd HH:mm:ss"
+        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+        return dateFormatter.date(from: self)!
+    }
+    
+    
+    func toMyDateString() -> String
+    {
+        
+        let day = self.toMyDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        return dateFormatter.string(from: day)
+    }
+    
+    
+    // Check for invalid character in the QRCode
+    func hasInvalidCharacters() -> Bool{
+        let invalidChars: Set<Character> = [".", "#", "$", "[", "]" ]
+        let hasInvalidChars = invalidChars.isDisjoint(with: self)
+        if !hasInvalidChars {
+            // Has invalid characters
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    
+}

@@ -30,13 +30,25 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func showLogoutAlert(AlertTitle: String, Message: String, confirmAction: @escaping () -> Void) {
+        let alert = UIAlertController(title: AlertTitle, message: Message, preferredStyle: .alert)
+        
+        // Cancel action
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        // Confirm action
+        alert.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { _ in
+            confirmAction()  // Call the closure to handle logout
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    
 }
 
 
 extension UIViewController {
-    
-    // Downloading Image from web
-
     func downloadImageIntoView(imagePath : String, imageView : UIImageView){
         
         let poster_url = URL(string : imagePath)
@@ -80,13 +92,13 @@ extension UIViewController{
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(keyboardWillShow),
-            name: UIResponder.keyboardWillShowNotification, // Updated here
+            name: UIResponder.keyboardWillShowNotification,
             object: nil
         )
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(keyboardWillHide),
-            name: UIResponder.keyboardWillHideNotification, // Updated here
+            name: UIResponder.keyboardWillHideNotification, 
             object: nil
         )
     }
