@@ -29,13 +29,7 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
     
     var MyClassList = [ClassDetails]()
     
-   
-    
-    
-    
-    
-    
-    
+       
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -44,22 +38,13 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
         if Auth.auth().currentUser?.uid == nil {
             perform(#selector(logoutPressed), with: nil, afterDelay: 0)
         }
-            
-            //  if user is logged in
         else{
-            // First getting the data from the cloud
-//            getUserDetails()
-
-
-            // Navigation bar setup
+            
             self.navigationItem.title = "My Classes"
             
             self.navigationController?.navigationBar.tintColor = UIColor.black
             self.navigationController?.navigationBar.barStyle = UIBarStyle.blackTranslucent
-            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-                
-                //[NSForegroundColorAttributeName: UIColor.orange]
-            
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
             
             let addClassButton : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAddClass))
             
@@ -82,17 +67,6 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
 
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    ////////////////////////////// Helper methods //////////////////////////////
     
     func getUserDetails(){
         let userId = Auth.auth().currentUser?.uid
@@ -237,17 +211,6 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    ////////////////////////////// Action handlers //////////////////////////////
-
-    
     @objc func handleAddClass(){
         print("Add class pressed")
         if CurrentUserDetails.UserType == "tutors"{
@@ -272,22 +235,6 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
         present(loginPage, animated : true, completion : nil)
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    //////////////////////      Collection View related methods      ////////////////////
-
-    //
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return MyClassList.count
     }
@@ -335,41 +282,11 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
         
         tabBarController.CurrentDetails = details
         
-
-        
         self.navigationController?.pushViewController(tabBarController, animated: true)
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-
 
 }
-
-
-
-
-
-
-
-////////////////////////////// Custom Collection view cell  //////////////////////////////
-
 
 
 class myCustomCell : UICollectionViewCell {
@@ -402,7 +319,7 @@ class myCustomCell : UICollectionViewCell {
     var classNameLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
+        label.textColor = .black
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font = UIFont.boldSystemFont(ofSize: 20)
@@ -412,9 +329,6 @@ class myCustomCell : UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-//        backgroundColor = UIColor.red
-        
-        // Setting up the background image
         addSubview(myImage)
         myImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         myImage.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
@@ -423,7 +337,6 @@ class myCustomCell : UICollectionViewCell {
         
         // Setting the baseView
         addSubview(baseView)
-//        baseView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         baseView.leftAnchor.constraint(equalTo: leftAnchor, constant: 22).isActive = true
         baseView.rightAnchor.constraint(equalTo: rightAnchor, constant: -9).isActive = true
         baseView.topAnchor.constraint(equalTo: topAnchor, constant: 25).isActive = true
@@ -443,9 +356,6 @@ class myCustomCell : UICollectionViewCell {
         classNameLabel.topAnchor.constraint(equalTo: posterImageView.bottomAnchor).isActive = true
         classNameLabel.leftAnchor.constraint(equalTo: baseView.leftAnchor, constant: 4).isActive = true
         classNameLabel.rightAnchor.constraint(equalTo: baseView.rightAnchor, constant: -4).isActive = true
-        
-        
-
     }
     
     required init?(coder aDecoder: NSCoder) {

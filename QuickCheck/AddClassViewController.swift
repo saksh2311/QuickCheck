@@ -18,7 +18,7 @@ class AddClassViewController: UIViewController, UIImagePickerControllerDelegate,
         
         self.hideKeyboardWhenTappedAround()
         self.avoidKeyboardObstruction()
-        view.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor.white
         
         self.navigationItem.title = "Create Class"
 
@@ -231,7 +231,7 @@ class AddClassViewController: UIViewController, UIImagePickerControllerDelegate,
     var posterBaseView : UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor.white
         return view
     }()
     
@@ -396,9 +396,6 @@ class AddClassViewController: UIViewController, UIImagePickerControllerDelegate,
         stackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
         
-        
-        
-        
         // Adding other views to stackview
         stackView.addArrangedSubview(posterBaseView)
         posterBaseView.centerXAnchor.constraint(equalTo: stackView.centerXAnchor).isActive = true
@@ -454,16 +451,4 @@ class AddClassViewController: UIViewController, UIImagePickerControllerDelegate,
         stackView.addArrangedSubview(textField)
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
