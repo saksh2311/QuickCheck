@@ -42,7 +42,7 @@ class AddClassViewController: UIViewController, UIImagePickerControllerDelegate,
         
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary;
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary;
         imagePicker.allowsEditing = true
         
         self.present(imagePicker, animated: true, completion: nil)
@@ -96,7 +96,7 @@ class AddClassViewController: UIViewController, UIImagePickerControllerDelegate,
         let className = classNameTextField.text ?? ""
         let totalLectures = lecturesCountTextField.text ?? ""
         let classLocation = classLocationTextField.text ?? ""
-        let classPosterImage: UIImage = posterImageView.image!
+        let classPosterImage: UIImage = posterImageView.image ?? UIImage(named: "blank_image") ?? UIImage()
         
         let defaultChildren = ["default": "default"]
         
@@ -121,17 +121,17 @@ class AddClassViewController: UIViewController, UIImagePickerControllerDelegate,
         
         // Add this class to the current tutor
         ref.child("tutors").child(tutorId).child("my_classes").child(classId).setValue("0")
-        
-        if classPosterImage == #imageLiteral(resourceName: "blank_image") {
+        let defaultImage = UIImage(named: "blank_image") ?? UIImage()
+        if classPosterImage.pngData() == defaultImage.pngData() {
             print("No image uploaded")
             newClassRef.child("poster_path").setValue(defaultImageURL)
             UIViewController.removeSpinner(spinner: loadingScreen)
             self.navigationController?.popViewController(animated: true)
-        } else {
+        }else {
             // Now upload the profile image
             let storageRef = Storage.storage().reference().child("class_posters").child(posterName)
             
-            if let uploadImage = UIImageJPEGRepresentation(classPosterImage, 0.1) {
+            if let uploadImage = classPosterImage.jpegData(compressionQuality: 0.1) {
                 storageRef.putData(uploadImage, metadata: nil) { (metadata, error) in
                     if let error = error {
                         print(error)
@@ -246,7 +246,7 @@ class AddClassViewController: UIViewController, UIImagePickerControllerDelegate,
         imageView.addGestureRecognizer(tap)
         imageView.isUserInteractionEnabled = true
         
-        imageView.image = #imageLiteral(resourceName: "blank_image")
+        imageView.image = UIImage(named: "blank_image")
         return imageView
     }()
     

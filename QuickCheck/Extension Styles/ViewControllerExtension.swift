@@ -59,10 +59,10 @@ extension UIViewController {
                 DispatchQueue.main.async {
                     if(data == nil)
                     {
-                        imageView.image = #imageLiteral(resourceName: "blank_image")
+                        imageView.image = UIImage(named: "blank_image")
                     }
                     else{
-                        imageView.image = UIImage(data: data!) ?? #imageLiteral(resourceName: "blank_image")
+                        imageView.image = UIImage(data: data!) ?? UIImage(named: "blank_image")
                     }
                 }
             }
@@ -89,8 +89,16 @@ extension UIViewController {
 extension UIViewController{
     
     func avoidKeyboardObstruction(){
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
+        NotificationCenter.default.addObserver(self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil)
+                
+        NotificationCenter.default.addObserver(self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil)
+            
     }
     
     

@@ -38,13 +38,8 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = UIColor.white
         self.collectionView!.register(myCustomCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        view.backgroundColor = UIColor.black
-        
-        
-        
         // If user is not logged in
         if Auth.auth().currentUser?.uid == nil {
             perform(#selector(logoutPressed), with: nil, afterDelay: 0)
@@ -59,9 +54,9 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
             // Navigation bar setup
             self.navigationItem.title = "My Classes"
             
-            self.navigationController?.navigationBar.tintColor = UIColor.white
+            self.navigationController?.navigationBar.tintColor = UIColor.black
             self.navigationController?.navigationBar.barStyle = UIBarStyle.blackTranslucent
-            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
                 
                 //[NSForegroundColorAttributeName: UIColor.orange]
             
@@ -302,7 +297,14 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
         
         cell.posterImageView.image = nil
         
-        self.downloadImageIntoView(imagePath: MyClassList[indexPath.row].PosterURL!, imageView: cell.posterImageView)
+        let defaultImageURL = "https://firebasestorage.googleapis.com/v0/b/cs5520-ios-project.appspot.com/o/class_posters%2Fdefault_cover.jpg?alt=media&token=3f346fdf-cfad-4ccc-960e-56cf953aef1d"
+        
+        if let posterURL = MyClassList[indexPath.row].PosterURL {
+            self.downloadImageIntoView(imagePath: posterURL, imageView: cell.posterImageView)
+        } else {
+            self.downloadImageIntoView(imagePath: defaultImageURL, imageView: cell.posterImageView)
+        }
+        
         cell.classNameLabel.text = MyClassList[indexPath.row].ClassName
         
         return cell
@@ -321,7 +323,7 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
         let numberOfCells = floor(self.view.frame.size.width / cellWidth)
         let edgeInsets = (self.view.frame.size.width - (numberOfCells * cellWidth)) / (numberOfCells + 1)
         
-        return UIEdgeInsetsMake(20, edgeInsets, 0, edgeInsets)
+        return UIEdgeInsets(top: 20, left: edgeInsets, bottom: 0, right: edgeInsets)
     }
     
     
