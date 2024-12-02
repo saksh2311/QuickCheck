@@ -47,23 +47,23 @@ extension UIButton {
 
 extension UIView {
     
-    // Creates a blank spacer view with adjustable height
-    func makeBlankSpace(height: CGFloat = 16) -> UIView {
+    func makeBlankSpace() -> UIView {
+        
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.clear
-        view.heightAnchor.constraint(equalToConstant: height).isActive = true
         return view
     }
     
     
     // Fade animation
-    func fadeTransition(_ duration: CFTimeInterval) {
+    func fadeTransition(_ duration:CFTimeInterval) {
         let animation = CATransition()
-        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        animation.type = CATransitionType.fade
+        animation.timingFunction = CAMediaTimingFunction(name:
+            kCAMediaTimingFunctionEaseInEaseOut)
+        animation.type = kCATransitionFade
         animation.duration = duration
-        layer.add(animation, forKey: CATransitionType.fade.rawValue)
+        layer.add(animation, forKey: kCATransitionFade)
     }
 }
 

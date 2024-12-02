@@ -88,21 +88,13 @@ extension UIViewController {
 // Move TextField Up to avoid keyboard
 extension UIViewController{
     
-    func avoidKeyboardObstruction() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillShow),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillHide),
-            name: UIResponder.keyboardWillHideNotification, 
-            object: nil
-        )
+    func avoidKeyboardObstruction(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
     }
-
+    
+    
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         self.view.frame.origin.y = -100 // Move view 100 points upward
     }

@@ -16,7 +16,7 @@ extension UIViewController {
         spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
         
         // Loading spinner
-        let ai = UIActivityIndicatorView(style: .large)
+        let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
 
         ai.startAnimating()
         
