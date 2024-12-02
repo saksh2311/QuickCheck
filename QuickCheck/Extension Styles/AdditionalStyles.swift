@@ -67,6 +67,18 @@ extension UIView {
     }
 }
 
+extension String {
+    // Get the string before a character
+    func getStringBeforeCharacter(lastCharacter : String) -> String {
+        var result = ""
+        let OriginalString = self
+        if let range = OriginalString.range(of: lastCharacter) {
+            result =  String(OriginalString[(OriginalString.startIndex)..<range.lowerBound])
+        }
+        return result
+    }
+}
+
 extension String
 {
     func toMyDate() -> Date
@@ -101,4 +113,12 @@ extension String
         }
     }
     
+}
+
+extension Date {
+    func toString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MMM/dd HH:mm:ss"
+        return dateFormatter.string(from: self)
+    }
 }
