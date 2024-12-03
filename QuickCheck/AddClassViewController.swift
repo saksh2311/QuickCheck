@@ -10,7 +10,7 @@ import Firebase
 
 class AddClassViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    let defaultImageURL = "https://firebasestorage.googleapis.com/v0/b/cs5520-ios-project.firebasestorage.app/o/class_logo.jpg?alt=media&token=506aafdc-e321-40f7-88b2-e219516503d2"
+    let defaultImageURL = "https://firebasestorage.googleapis.com/v0/b/cs5520-ios-project.firebasestorage.app/o/default_class_logo.png?alt=media&token=85fc6bf4-7bf3-4567-a35f-d831490c49de"
     
     
     override func viewDidLoad() {
