@@ -10,6 +10,31 @@
 		324EF2973717F2FCC1E02114 /* Pods_QuickCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A977E3CD07FCE7328D683E /* Pods_QuickCheck.framework */; };
 		3CD7D43C7CA1F7E478A3AB80 /* Pods_QuickCheckUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414F8777FA035009E1BD1342 /* Pods_QuickCheckUITests.framework */; };
 		742D1B73520E025E2E44C350 /* Pods_QuickCheckTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 498CA70350D490A97F6DEBC8 /* Pods_QuickCheckTests.framework */; };
+		A16F24E62CFE780D0065025B /* AdditionalStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F24D32CFE780D0065025B /* AdditionalStyles.swift */; };
+		A16F24E72CFE780D0065025B /* DisplaySpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F24D42CFE780D0065025B /* DisplaySpinner.swift */; };
+		A16F24E82CFE780D0065025B /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F24D52CFE780D0065025B /* ViewControllerExtension.swift */; };
+		A16F24E92CFE780D0065025B /* AddClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F24D72CFE780D0065025B /* AddClassViewController.swift */; };
+		A16F24EA2CFE780D0065025B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F24D82CFE780D0065025B /* AppDelegate.swift */; };
+		A16F24EB2CFE780D0065025B /* MyClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F24E02CFE780D0065025B /* MyClassesViewController.swift */; };
+		A16F24EC2CFE780D0065025B /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F24E12CFE780D0065025B /* RegistrationController.swift */; };
+		A16F24ED2CFE780D0065025B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F24E22CFE780D0065025B /* SceneDelegate.swift */; };
+		A16F24EE2CFE780D0065025B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F24E32CFE780D0065025B /* TabBarController.swift */; };
+		A16F24EF2CFE780D0065025B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F24E42CFE780D0065025B /* ViewController.swift */; };
+		A16F24F02CFE780D0065025B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A16F24D92CFE780D0065025B /* Assets.xcassets */; };
+		A16F24F12CFE780D0065025B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A16F24DA2CFE780D0065025B /* GoogleService-Info.plist */; };
+		A16F24F32CFE780D0065025B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A16F24DD2CFE780D0065025B /* LaunchScreen.storyboard */; };
+		A16F24F42CFE780D0065025B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A16F24DF2CFE780D0065025B /* Main.storyboard */; };
+		A16F24F72CFE78120065025B /* QuickCheckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F24F52CFE78120065025B /* QuickCheckTests.swift */; };
+		A16F24FB2CFE78140065025B /* QuickCheckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F24F82CFE78140065025B /* QuickCheckUITests.swift */; };
+		A16F24FC2CFE78140065025B /* QuickCheckUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F24F92CFE78140065025B /* QuickCheckUITestsLaunchTests.swift */; };
+		A16F24FF2CFE78AB0065025B /* TutorClassHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F24FE2CFE78AB0065025B /* TutorClassHomeViewController.swift */; };
+		A16F25012CFE78B50065025B /* TutorQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F25002CFE78B50065025B /* TutorQRCodeViewController.swift */; };
+		A16F25032CFE78BE0065025B /* DisplayQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F25022CFE78BE0065025B /* DisplayQRCodeViewController.swift */; };
+		A16F25052CFE78C70065025B /* TutorMyStudentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F25042CFE78C70065025B /* TutorMyStudentsViewController.swift */; };
+		A16F25082CFE78F60065025B /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F25072CFE78F60065025B /* MyProfileViewController.swift */; };
+		A16F250B2CFE7AD30065025B /* StudentMyAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F250A2CFE7AD30065025B /* StudentMyAttendanceViewController.swift */; };
+		A16F250D2CFE7B270065025B /* ColorsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F250C2CFE7B270065025B /* ColorsExtensions.swift */; };
+		A16F250F2CFE86400065025B /* StudentQRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F250E2CFE86400065025B /* StudentQRScannerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,42 +63,37 @@
 		678BF56374D583C9C4F21E97 /* Pods-QuickCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickCheck.debug.xcconfig"; path = "Target Support Files/Pods-QuickCheck/Pods-QuickCheck.debug.xcconfig"; sourceTree = "<group>"; };
 		73A977E3CD07FCE7328D683E /* Pods_QuickCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9777F5EF0F2B2FE02C30E131 /* Pods-QuickCheckUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickCheckUITests.debug.xcconfig"; path = "Target Support Files/Pods-QuickCheckUITests/Pods-QuickCheckUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A16F24D32CFE780D0065025B /* AdditionalStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalStyles.swift; sourceTree = "<group>"; };
+		A16F24D42CFE780D0065025B /* DisplaySpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySpinner.swift; sourceTree = "<group>"; };
+		A16F24D52CFE780D0065025B /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		A16F24D72CFE780D0065025B /* AddClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClassViewController.swift; sourceTree = "<group>"; };
+		A16F24D82CFE780D0065025B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A16F24D92CFE780D0065025B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A16F24DA2CFE780D0065025B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A16F24DB2CFE780D0065025B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A16F24DC2CFE780D0065025B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A16F24DE2CFE780D0065025B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A16F24E02CFE780D0065025B /* MyClassesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyClassesViewController.swift; sourceTree = "<group>"; };
+		A16F24E12CFE780D0065025B /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		A16F24E22CFE780D0065025B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A16F24E32CFE780D0065025B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		A16F24E42CFE780D0065025B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A16F24F52CFE78120065025B /* QuickCheckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCheckTests.swift; sourceTree = "<group>"; };
+		A16F24F82CFE78140065025B /* QuickCheckUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCheckUITests.swift; sourceTree = "<group>"; };
+		A16F24F92CFE78140065025B /* QuickCheckUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCheckUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A16F24FE2CFE78AB0065025B /* TutorClassHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorClassHomeViewController.swift; sourceTree = "<group>"; };
+		A16F25002CFE78B50065025B /* TutorQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorQRCodeViewController.swift; sourceTree = "<group>"; };
+		A16F25022CFE78BE0065025B /* DisplayQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQRCodeViewController.swift; sourceTree = "<group>"; };
+		A16F25042CFE78C70065025B /* TutorMyStudentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorMyStudentsViewController.swift; sourceTree = "<group>"; };
+		A16F25072CFE78F60065025B /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		A16F250A2CFE7AD30065025B /* StudentMyAttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMyAttendanceViewController.swift; sourceTree = "<group>"; };
+		A16F250C2CFE7B270065025B /* ColorsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsExtensions.swift; sourceTree = "<group>"; };
+		A16F250E2CFE86400065025B /* StudentQRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentQRScannerViewController.swift; sourceTree = "<group>"; };
 		AEE127832CFCE1DA0071EC67 /* QuickCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE127992CFCE1DC0071EC67 /* QuickCheckTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickCheckTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE127A32CFCE1DC0071EC67 /* QuickCheckUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickCheckUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C558CAFA55FFAF30EF8E774C /* Pods-QuickCheckTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickCheckTests.debug.xcconfig"; path = "Target Support Files/Pods-QuickCheckTests/Pods-QuickCheckTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		AEE127AB2CFCE1DC0071EC67 /* Exceptions for "QuickCheck" folder in "QuickCheck" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = AEE127822CFCE1DA0071EC67 /* QuickCheck */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		AEE127852CFCE1DA0071EC67 /* QuickCheck */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				AEE127AB2CFCE1DC0071EC67 /* Exceptions for "QuickCheck" folder in "QuickCheck" target */,
-			);
-			path = QuickCheck;
-			sourceTree = "<group>";
-		};
-		AEE1279C2CFCE1DC0071EC67 /* QuickCheckTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = QuickCheckTests;
-			sourceTree = "<group>";
-		};
-		AEE127A62CFCE1DC0071EC67 /* QuickCheckUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = QuickCheckUITests;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AEE127802CFCE1DA0071EC67 /* Frameworks */ = {
@@ -126,12 +146,91 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A16F24D62CFE780D0065025B /* Extension Styles */ = {
+			isa = PBXGroup;
+			children = (
+				A16F24D32CFE780D0065025B /* AdditionalStyles.swift */,
+				A16F24D42CFE780D0065025B /* DisplaySpinner.swift */,
+				A16F24D52CFE780D0065025B /* ViewControllerExtension.swift */,
+				A16F250C2CFE7B270065025B /* ColorsExtensions.swift */,
+			);
+			path = "Extension Styles";
+			sourceTree = "<group>";
+		};
+		A16F24E52CFE780D0065025B /* QuickCheck */ = {
+			isa = PBXGroup;
+			children = (
+				A16F25092CFE7ABF0065025B /* StudentScreens */,
+				A16F25062CFE78E50065025B /* ProfileScreen */,
+				A16F24FD2CFE78910065025B /* TutorScreens */,
+				A16F24D62CFE780D0065025B /* Extension Styles */,
+				A16F24D72CFE780D0065025B /* AddClassViewController.swift */,
+				A16F24D82CFE780D0065025B /* AppDelegate.swift */,
+				A16F24D92CFE780D0065025B /* Assets.xcassets */,
+				A16F24DA2CFE780D0065025B /* GoogleService-Info.plist */,
+				A16F24DB2CFE780D0065025B /* Info.plist */,
+				A16F24DD2CFE780D0065025B /* LaunchScreen.storyboard */,
+				A16F24DF2CFE780D0065025B /* Main.storyboard */,
+				A16F24E02CFE780D0065025B /* MyClassesViewController.swift */,
+				A16F24E12CFE780D0065025B /* RegistrationController.swift */,
+				A16F24E22CFE780D0065025B /* SceneDelegate.swift */,
+				A16F24E32CFE780D0065025B /* TabBarController.swift */,
+				A16F24E42CFE780D0065025B /* ViewController.swift */,
+			);
+			path = QuickCheck;
+			sourceTree = "<group>";
+		};
+		A16F24F62CFE78120065025B /* QuickCheckTests */ = {
+			isa = PBXGroup;
+			children = (
+				A16F24F52CFE78120065025B /* QuickCheckTests.swift */,
+			);
+			path = QuickCheckTests;
+			sourceTree = "<group>";
+		};
+		A16F24FA2CFE78140065025B /* QuickCheckUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A16F24F82CFE78140065025B /* QuickCheckUITests.swift */,
+				A16F24F92CFE78140065025B /* QuickCheckUITestsLaunchTests.swift */,
+			);
+			path = QuickCheckUITests;
+			sourceTree = "<group>";
+		};
+		A16F24FD2CFE78910065025B /* TutorScreens */ = {
+			isa = PBXGroup;
+			children = (
+				A16F25042CFE78C70065025B /* TutorMyStudentsViewController.swift */,
+				A16F25022CFE78BE0065025B /* DisplayQRCodeViewController.swift */,
+				A16F25002CFE78B50065025B /* TutorQRCodeViewController.swift */,
+				A16F24FE2CFE78AB0065025B /* TutorClassHomeViewController.swift */,
+			);
+			path = TutorScreens;
+			sourceTree = "<group>";
+		};
+		A16F25062CFE78E50065025B /* ProfileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A16F25072CFE78F60065025B /* MyProfileViewController.swift */,
+			);
+			path = ProfileScreen;
+			sourceTree = "<group>";
+		};
+		A16F25092CFE7ABF0065025B /* StudentScreens */ = {
+			isa = PBXGroup;
+			children = (
+				A16F250E2CFE86400065025B /* StudentQRScannerViewController.swift */,
+				A16F250A2CFE7AD30065025B /* StudentMyAttendanceViewController.swift */,
+			);
+			path = StudentScreens;
+			sourceTree = "<group>";
+		};
 		AEE1277A2CFCE1DA0071EC67 = {
 			isa = PBXGroup;
 			children = (
-				AEE127852CFCE1DA0071EC67 /* QuickCheck */,
-				AEE1279C2CFCE1DC0071EC67 /* QuickCheckTests */,
-				AEE127A62CFCE1DC0071EC67 /* QuickCheckUITests */,
+				A16F24E52CFE780D0065025B /* QuickCheck */,
+				A16F24F62CFE78120065025B /* QuickCheckTests */,
+				A16F24FA2CFE78140065025B /* QuickCheckUITests */,
 				AEE127842CFCE1DA0071EC67 /* Products */,
 				7C19846C43677C3422092254 /* Pods */,
 				10630EA309670347F0D92F4E /* Frameworks */,
@@ -165,9 +264,6 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				AEE127852CFCE1DA0071EC67 /* QuickCheck */,
-			);
 			name = QuickCheck;
 			productName = QuickCheck;
 			productReference = AEE127832CFCE1DA0071EC67 /* QuickCheck.app */;
@@ -187,9 +283,6 @@
 			dependencies = (
 				AEE1279B2CFCE1DC0071EC67 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				AEE1279C2CFCE1DC0071EC67 /* QuickCheckTests */,
-			);
 			name = QuickCheckTests;
 			productName = QuickCheckTests;
 			productReference = AEE127992CFCE1DC0071EC67 /* QuickCheckTests.xctest */;
@@ -208,9 +301,6 @@
 			);
 			dependencies = (
 				AEE127A52CFCE1DC0071EC67 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				AEE127A62CFCE1DC0071EC67 /* QuickCheckUITests */,
 			);
 			name = QuickCheckUITests;
 			productName = QuickCheckUITests;
@@ -266,6 +356,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A16F24F02CFE780D0065025B /* Assets.xcassets in Resources */,
+				A16F24F12CFE780D0065025B /* GoogleService-Info.plist in Resources */,
+				A16F24F32CFE780D0065025B /* LaunchScreen.storyboard in Resources */,
+				A16F24F42CFE780D0065025B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +470,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A16F250F2CFE86400065025B /* StudentQRScannerViewController.swift in Sources */,
+				A16F25082CFE78F60065025B /* MyProfileViewController.swift in Sources */,
+				A16F24E62CFE780D0065025B /* AdditionalStyles.swift in Sources */,
+				A16F25012CFE78B50065025B /* TutorQRCodeViewController.swift in Sources */,
+				A16F24E72CFE780D0065025B /* DisplaySpinner.swift in Sources */,
+				A16F250D2CFE7B270065025B /* ColorsExtensions.swift in Sources */,
+				A16F24E82CFE780D0065025B /* ViewControllerExtension.swift in Sources */,
+				A16F250B2CFE7AD30065025B /* StudentMyAttendanceViewController.swift in Sources */,
+				A16F24E92CFE780D0065025B /* AddClassViewController.swift in Sources */,
+				A16F25052CFE78C70065025B /* TutorMyStudentsViewController.swift in Sources */,
+				A16F25032CFE78BE0065025B /* DisplayQRCodeViewController.swift in Sources */,
+				A16F24EA2CFE780D0065025B /* AppDelegate.swift in Sources */,
+				A16F24EB2CFE780D0065025B /* MyClassesViewController.swift in Sources */,
+				A16F24EC2CFE780D0065025B /* RegistrationController.swift in Sources */,
+				A16F24ED2CFE780D0065025B /* SceneDelegate.swift in Sources */,
+				A16F24FF2CFE78AB0065025B /* TutorClassHomeViewController.swift in Sources */,
+				A16F24EE2CFE780D0065025B /* TabBarController.swift in Sources */,
+				A16F24EF2CFE780D0065025B /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A16F24F72CFE78120065025B /* QuickCheckTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +503,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A16F24FB2CFE78140065025B /* QuickCheckUITests.swift in Sources */,
+				A16F24FC2CFE78140065025B /* QuickCheckUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +523,25 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		A16F24DD2CFE780D0065025B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A16F24DC2CFE780D0065025B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A16F24DF2CFE780D0065025B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A16F24DE2CFE780D0065025B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		AEE127AD2CFCE1DC0071EC67 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -417,14 +551,21 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AA9MPD5WKH;
+				DEVELOPMENT_TEAM = 283VB78BC3;
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QuickCheck/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = QuickCheck;
+				INFOPLIST_KEY_NSCameraUsageDescription = "\"Need Camera access to scan the QR Code\"";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "\"Need the Location services to check users current location\"";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Need the Location services to check users current location\"";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -432,10 +573,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sakshi.QuickCheck;
+				PRODUCT_BUNDLE_IDENTIFIER = "cs5520-ios-project.Team15";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -448,14 +589,21 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AA9MPD5WKH;
+				DEVELOPMENT_TEAM = 283VB78BC3;
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QuickCheck/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = QuickCheck;
+				INFOPLIST_KEY_NSCameraUsageDescription = "\"Need Camera access to scan the QR Code\"";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "\"Need the Location services to check users current location\"";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Need the Location services to check users current location\"";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -463,10 +611,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sakshi.QuickCheck;
+				PRODUCT_BUNDLE_IDENTIFIER = "cs5520-ios-project.Team15";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
