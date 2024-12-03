@@ -244,7 +244,7 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
         
         cell.posterImageView.image = nil
         
-        let defaultImageURL = "https://firebasestorage.googleapis.com/v0/b/cs5520-ios-project.appspot.com/o/class_posters%2Fdefault_cover.jpg?alt=media&token=3f346fdf-cfad-4ccc-960e-56cf953aef1d"
+        let defaultImageURL = "https://firebasestorage.googleapis.com/v0/b/cs5520-ios-project.firebasestorage.app/o/class_logo.jpg?alt=media&token=506aafdc-e321-40f7-88b2-e219516503d2"
         
         if let posterURL = MyClassList[indexPath.row].PosterURL {
             self.downloadImageIntoView(imagePath: posterURL, imageView: cell.posterImageView)
