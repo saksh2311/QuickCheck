@@ -11,7 +11,7 @@ import Firebase
 import CoreLocation
 import MapKit
 
-class TutorQRCodeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate {
+class QRCodeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate {
     
     let classSizes = ["  Small (10x10 meters)  ", "  Medium (50x50 meters)  ", "  Large (100x100 meters)  "]
     let classSizesLookup = ["Small", "Medium", "Large"]

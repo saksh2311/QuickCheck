@@ -9,8 +9,7 @@
 import UIKit
 import Firebase
 
-class TutorClassHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
-
+class ClassHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
 
     var CurrentDetails : UIViewController.BasicDetails?
 
