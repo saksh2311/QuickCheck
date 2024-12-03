@@ -32,9 +32,8 @@
 		A16F25032CFE78BE0065025B /* DisplayQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F25022CFE78BE0065025B /* DisplayQRCodeViewController.swift */; };
 		A16F25052CFE78C70065025B /* MyStudentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F25042CFE78C70065025B /* MyStudentsViewController.swift */; };
 		A16F25082CFE78F60065025B /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F25072CFE78F60065025B /* MyProfileViewController.swift */; };
-		A16F250B2CFE7AD30065025B /* StudentMyAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F250A2CFE7AD30065025B /* StudentMyAttendanceViewController.swift */; };
 		A16F250D2CFE7B270065025B /* ColorsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F250C2CFE7B270065025B /* ColorsExtensions.swift */; };
-		A16F250F2CFE86400065025B /* StudentQRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F250E2CFE86400065025B /* StudentQRScannerViewController.swift */; };
+		A16F25112CFEAA7D0065025B /* StudentMyAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F25102CFEAA7D0065025B /* StudentMyAttendanceViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,9 +85,8 @@
 		A16F25022CFE78BE0065025B /* DisplayQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQRCodeViewController.swift; sourceTree = "<group>"; };
 		A16F25042CFE78C70065025B /* MyStudentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStudentsViewController.swift; sourceTree = "<group>"; };
 		A16F25072CFE78F60065025B /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
-		A16F250A2CFE7AD30065025B /* StudentMyAttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMyAttendanceViewController.swift; sourceTree = "<group>"; };
 		A16F250C2CFE7B270065025B /* ColorsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsExtensions.swift; sourceTree = "<group>"; };
-		A16F250E2CFE86400065025B /* StudentQRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentQRScannerViewController.swift; sourceTree = "<group>"; };
+		A16F25102CFEAA7D0065025B /* StudentMyAttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMyAttendanceViewController.swift; sourceTree = "<group>"; };
 		AEE127832CFCE1DA0071EC67 /* QuickCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE127992CFCE1DC0071EC67 /* QuickCheckTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickCheckTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE127A32CFCE1DC0071EC67 /* QuickCheckUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickCheckUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,8 +217,7 @@
 		A16F25092CFE7ABF0065025B /* StudentScreens */ = {
 			isa = PBXGroup;
 			children = (
-				A16F250E2CFE86400065025B /* StudentQRScannerViewController.swift */,
-				A16F250A2CFE7AD30065025B /* StudentMyAttendanceViewController.swift */,
+				A16F25102CFEAA7D0065025B /* StudentMyAttendanceViewController.swift */,
 			);
 			path = StudentScreens;
 			sourceTree = "<group>";
@@ -470,19 +467,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A16F250F2CFE86400065025B /* StudentQRScannerViewController.swift in Sources */,
 				A16F25082CFE78F60065025B /* MyProfileViewController.swift in Sources */,
 				A16F24E62CFE780D0065025B /* AdditionalStyles.swift in Sources */,
 				A16F25012CFE78B50065025B /* GenerateQRCodeViewController.swift in Sources */,
 				A16F24E72CFE780D0065025B /* DisplaySpinner.swift in Sources */,
 				A16F250D2CFE7B270065025B /* ColorsExtensions.swift in Sources */,
 				A16F24E82CFE780D0065025B /* ViewControllerExtension.swift in Sources */,
-				A16F250B2CFE7AD30065025B /* StudentMyAttendanceViewController.swift in Sources */,
 				A16F24E92CFE780D0065025B /* AddClassViewController.swift in Sources */,
 				A16F25052CFE78C70065025B /* MyStudentsViewController.swift in Sources */,
 				A16F25032CFE78BE0065025B /* DisplayQRCodeViewController.swift in Sources */,
 				A16F24EA2CFE780D0065025B /* AppDelegate.swift in Sources */,
 				A16F24EB2CFE780D0065025B /* MyClassesViewController.swift in Sources */,
+				A16F25112CFEAA7D0065025B /* StudentMyAttendanceViewController.swift in Sources */,
 				A16F24EC2CFE780D0065025B /* RegistrationController.swift in Sources */,
 				A16F24ED2CFE780D0065025B /* SceneDelegate.swift in Sources */,
 				A16F24FF2CFE78AB0065025B /* ClassHomeViewController.swift in Sources */,
