@@ -10,7 +10,7 @@ import Firebase
 
 class AddClassViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    let defaultImageURL = "https://firebasestorage.googleapis.com/v0/b/cs5520-ios-project.appspot.com/o/class_posters%2Fdefault_cover.jpg?alt=media&token=3f346fdf-cfad-4ccc-960e-56cf953aef1d"
+    let defaultImageURL = "https://firebasestorage.googleapis.com/v0/b/cs5520-ios-project.firebasestorage.app/o/class_logo.jpg?alt=media&token=506aafdc-e321-40f7-88b2-e219516503d2"
     
     
     override func viewDidLoad() {
@@ -239,15 +239,25 @@ class AddClassViewController: UIViewController, UIImagePickerControllerDelegate,
     // class poster imageview
     lazy var posterImageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleToFill
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handlePosterTap))
-        imageView.addGestureRecognizer(tap)
-        imageView.isUserInteractionEnabled = true
-        
-        imageView.image = UIImage(named: "blank_image")
-        return imageView
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.contentMode = .scaleAspectFit
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(handlePosterTap))
+            imageView.addGestureRecognizer(tap)
+            imageView.isUserInteractionEnabled = true
+            
+            // Use the default image URL instead
+            if let defaultImageURL = URL(string: defaultImageURL) {
+                URLSession.shared.dataTask(with: defaultImageURL) { (data, response, error) in
+                    if let imageData = data {
+                        DispatchQueue.main.async {
+                            imageView.image = UIImage(data: imageData)
+                        }
+                    }
+                }.resume()
+            }
+            
+            return imageView
     }()
     
     //textFields and their views
