@@ -167,7 +167,7 @@ class StudentGetQRCodeViewController: UIViewController, AVCaptureMetadataOutputO
                     }
                 }
             }
-                
+            
             else{
                 self.showAlertAndResumeScanner(Title: "Invalid QR Code", Message: "Please scan a valid QR Code")
             }
