@@ -9,29 +9,32 @@ import UIKit
 import Firebase
 
 class AddClassViewController: UIViewController {
-    private let scrollView: UIScrollView = {
-            let view = UIScrollView()
-            view.translatesAutoresizingMaskIntoConstraints = false
-            return view
-        }()
+    
     override func viewDidLoad() {
-            super.viewDidLoad()
-            view.backgroundColor = UIColor.white
-            self.navigationItem.title = "Create Class"
-            setupViews()
-            setupKeyboardHandling()
-        }
+        super.viewDidLoad()
+        view.backgroundColor = UIColor.white
+        self.navigationItem.title = "Create Class"
+        setupViews()
+        setupKeyboardHandling()
+    }
+    
+    private let scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private func setupKeyboardHandling() {
-            let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-            view.addGestureRecognizer(tap)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
             
-            // Set keyboard dismiss mode
-            scrollView.keyboardDismissMode = .onDrag
-        }
+        // Set keyboard dismiss mode
+        scrollView.keyboardDismissMode = .onDrag
+    }
         
     @objc internal override func dismissKeyboard() {
-            view.endEditing(true)
-        }
+        view.endEditing(true)
+    }
     
     // Action handlers
     @objc func handleCreateClass() {
