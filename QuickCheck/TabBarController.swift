@@ -13,13 +13,12 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     let classHomeViewController : ClassHomeViewController = ClassHomeViewController()
     let QRCodeViewController : GenerateQRCodeViewController = GenerateQRCodeViewController()
-    let MyStudentViewController : StudentMyAttendanceViewController = StudentMyAttendanceViewController()
+    let MyStudentViewController : MyStudentsViewController = MyStudentsViewController()
     let ProfileViewController : MyProfileViewController = MyProfileViewController()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("called")
         view.backgroundColor = UIColor.black
         self.delegate = self
 
@@ -74,17 +73,13 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         let qrCodeTab = UINavigationController(rootViewController: QRCodeViewController)
         qrCodeTab.tabBarItem.title = "Generate QR"
         qrCodeTab.tabBarItem.image = UIImage(systemName: "qrcode")
-        
-        
-        
+
         // My Students viewController
-        MyStudentViewController.CurrentDetails = CurrentDetails
+        MyStudentViewController.basicDetails = CurrentDetails
         let myStudentTab = UINavigationController(rootViewController: MyStudentViewController)
         myStudentTab.tabBarItem.title = "My Students"
         myStudentTab.tabBarItem.image = UIImage(systemName: "person.3.fill")
-        
-        
-        
+
         // My profile viewController
         ProfileViewController.CurrentDetails = CurrentDetails
         let profileTab = UINavigationController(rootViewController: ProfileViewController)
