@@ -11,7 +11,7 @@ import Firebase
 class MyClassesViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     private let reuseIdentifier = "Cell"
-    
+    let defaultImageURL = "https://firebasestorage.googleapis.com/v0/b/cs5520-ios-project.firebasestorage.app/o/default_class_logo.png?alt=media&token=df28a7f3-c7be-4974-a7cb-7aca3ea33c87"
 
     struct ClassDetails {
         var ClassID : String?
@@ -111,10 +111,8 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
                     if !classId.contains("default"){
                         let className = snapshot.childSnapshot(forPath: "classes").childSnapshot(forPath: classId).childSnapshot(forPath: "class_name").value as? String
                         
-                        let posterUrl = snapshot.childSnapshot(forPath: "classes").childSnapshot(forPath: classId).childSnapshot(forPath: "poster_path").value as? String
                         
-                        
-                        let currentClassDetails = ClassDetails.init(ClassID: classId, ClassName: className, PosterURL: posterUrl)
+                        let currentClassDetails = ClassDetails.init(ClassID: classId, ClassName: className, PosterURL: self.defaultImageURL)
                         self.MyClassList.append(currentClassDetails)
                     }
                     
@@ -254,7 +252,7 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
         
         cell.posterImageView.image = nil
         
-        let defaultImageURL = "https://firebasestorage.googleapis.com/v0/b/cs5520-ios-project.firebasestorage.app/o/class_logo.jpg?alt=media&token=506aafdc-e321-40f7-88b2-e219516503d2"
+        let defaultImageURL = "https://firebasestorage.googleapis.com/v0/b/cs5520-ios-project.firebasestorage.app/o/default_class_logo.png?alt=media&token=df28a7f3-c7be-4974-a7cb-7aca3ea33c87"
         
         if let posterURL = MyClassList[indexPath.row].PosterURL {
             self.downloadImageIntoView(imagePath: posterURL, imageView: cell.posterImageView)
