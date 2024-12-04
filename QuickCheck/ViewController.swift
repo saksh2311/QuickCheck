@@ -284,6 +284,7 @@ class ViewController: UIViewController {
         view.placeholder = "Username"
         view.adjustsFontSizeToFitWidth = true
         view.keyboardType = UIKeyboardType.emailAddress
+        view.textColor = UIColor.black
         view.attributedPlaceholder = NSAttributedString(
                 string: "Username",
                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
@@ -304,7 +305,7 @@ class ViewController: UIViewController {
         view.placeholder = "Password"
         view.adjustsFontSizeToFitWidth = true
         view.isSecureTextEntry = true
-        
+        view.textColor = UIColor.black
         // Set placeholder text color
         view.attributedPlaceholder = NSAttributedString(
                 string: "Password",
