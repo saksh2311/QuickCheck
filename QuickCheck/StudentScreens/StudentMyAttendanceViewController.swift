@@ -45,6 +45,9 @@ class StudentMyAttendanceViewController: UIViewController, UITableViewDelegate, 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.tabBarController?.title = ViewTitle
+        if(isTutor){
+            self.navigationItem.title = ViewTitle
+        }
         populateAttendanceDetails()
     }
     
