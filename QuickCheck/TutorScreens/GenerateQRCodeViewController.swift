@@ -27,7 +27,7 @@ class GenerateQRCodeViewController: UIViewController, UIPickerViewDelegate, UIPi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationController?.navigationBar.barStyle = .blackTranslucent
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.black
 
         view.backgroundColor = UIColor.darkGray
         setupViews()

@@ -19,7 +19,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor.white
         self.delegate = self
 
         tabBar.tintColor = UIColor.green
@@ -101,7 +101,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
         let myAttendanceViewController : StudentMyAttendanceViewController = StudentMyAttendanceViewController()
         myAttendanceViewController.CurrentDetails = CurrentDetails
-        myAttendanceViewController.ViewTitle = "My Attendance"
         
         let myAttendanceTab = UINavigationController(rootViewController: myAttendanceViewController)
         myAttendanceTab.tabBarItem.title = "My Attendance"
