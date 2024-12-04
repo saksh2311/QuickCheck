@@ -171,6 +171,12 @@ class RegistrationController: UIViewController {
         view.placeholder = "Username"
         view.adjustsFontSizeToFitWidth = true
         view.keyboardType = UIKeyboardType.emailAddress
+        view.textColor = UIColor.black
+        view.attributedPlaceholder = NSAttributedString(
+                string: "Username (Email)",
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
+            )
+        
         return view
     }()
     
@@ -187,6 +193,12 @@ class RegistrationController: UIViewController {
         view.placeholder = "Password"
         view.adjustsFontSizeToFitWidth = true
         view.isSecureTextEntry = true
+        view.textColor = UIColor.black
+        view.attributedPlaceholder = NSAttributedString(
+                string: "Password",
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
+            )
+        
         return view
     }()
     
@@ -204,6 +216,12 @@ class RegistrationController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.placeholder = "Full Name"
         view.adjustsFontSizeToFitWidth = true
+        view.textColor = UIColor.black
+        view.attributedPlaceholder = NSAttributedString(
+                string: "Full Name",
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
+            )
+        
         return view
     }()
     
@@ -214,10 +232,6 @@ class RegistrationController: UIViewController {
         view.backgroundColor = UIColor.darkGray
         return view
     }()
-    
-    
-    
-    
     
     let userTypeLabel : UILabel = {
         let label = UILabel()
