@@ -61,7 +61,7 @@ class ClassHomeViewController: UIViewController, UITableViewDelegate, UITableVie
                 totalLectures = finishedLectures
                 remainingLectures = 0
             }
-            
+            self.courseDetailsID.text = "Class ID : \(classId)"
             self.totalLecturesLabel.text = "Total Lectures : \(totalLectures ?? 0)"
             self.presentLectureLabel.text = "Present Lecture : \(finishedLectures)"
             self.remainingLectureLabel.text = "Remaining Lectures : \(remainingLectures)"
@@ -367,7 +367,7 @@ class ClassHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         stackView.spacing = 3
         return stackView
     }()
-    
+
     
     // Class Details label
     var attendanceDetailsLabel : UILabel = {
@@ -429,6 +429,16 @@ class ClassHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         label.font = .boldSystemFont(ofSize: 25)
         label.textAlignment = .center
         label.text = "Course Details"
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    // Class ID
+    var courseDetailsID : UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.text = "Class ID : "
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
@@ -586,6 +596,7 @@ class ClassHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // Add all the labels
         courseDetailsStackView.addArrangedSubview(courseDetailsLabel)
+        courseDetailsStackView.addArrangedSubview(courseDetailsID)
         courseDetailsStackView.addArrangedSubview(totalLecturesLabel)
         courseDetailsStackView.addArrangedSubview(presentLectureLabel)
         courseDetailsStackView.addArrangedSubview(remainingLectureLabel)
