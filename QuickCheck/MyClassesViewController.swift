@@ -223,17 +223,27 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
     }
     
     // Logout button handler
-    @objc func logoutPressed(){
-        // Logging out the user
-        do{
-            try Auth.auth().signOut()
-        } catch let error{
-            print(error)
-        }
-        // Gping back to Login page
-        let loginPage = ViewController()
-        present(loginPage, animated : true, completion : nil)
+    @objc func logoutPressed() {
+        // Show the alert with a confirmation action for logging out
+        self.showLogoutAlert(AlertTitle: "Log Out", Message: "Are you sure you want to log out?", confirmAction: {
+            // This closure gets called if the user confirms the log out
+            
+            // Remove the user token and synchronize UserDefaults
+            UserDefaults.standard.removeObject(forKey: "userToken")
+            UserDefaults.standard.synchronize()
+
+            // Sign out the user from Firebase
+            do {
+                try Auth.auth().signOut()  // Sign out from Firebase
+            } catch let error {
+                print("Error signing out: \(error.localizedDescription)")
+            }
+
+            // Navigate back to the root view controller (login screen)
+            self.navigationController?.popToRootViewController(animated: true)
+        })
     }
+
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return MyClassList.count
