@@ -186,9 +186,11 @@ class MyStudentsViewController: UITableViewController, UISearchResultsUpdating {
         searchController.searchBar.placeholder = "Search Students"
         searchController.searchResultsUpdater = self
         searchController.definesPresentationContext = true
-        
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
+
+        searchController.searchBar.barTintColor = UIColor.white
+        searchController.searchBar.backgroundImage = UIImage()
         
         if searchKeyword != ""{
             searchController.searchBar.text = searchKeyword
@@ -211,7 +213,6 @@ class MyStudentsViewController: UITableViewController, UISearchResultsUpdating {
         
         if !keyword.isEmpty{
         isSearching = true
-        print("Searching for keyword : \(keyword)")
         filteredStudentList.removeAll()
         
         var counter = 0
@@ -258,7 +259,7 @@ class MyStudentsViewController: UITableViewController, UISearchResultsUpdating {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! CustomStudentCell
         
         var studentName, profilePath : String?
-        cell.profileImageView.image = UIImage(named: "blank_image")
+        cell.profileImageView.image = UIImage(systemName: "person.circle")
         
         if isSearching{
             studentName = filteredStudentList[indexPath.row].StudentName
@@ -284,7 +285,6 @@ class MyStudentsViewController: UITableViewController, UISearchResultsUpdating {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("row selected")
         
         var selectedStdId = ""
         var selectedStdName = ""
@@ -322,7 +322,7 @@ class MyStudentsViewController: UITableViewController, UISearchResultsUpdating {
         let baseCellView : UIView = {
             let view = UIView()
             view.translatesAutoresizingMaskIntoConstraints = false
-            view.backgroundColor = UIColor.black
+            view.backgroundColor = UIColor.white
             return view
         }()
         
@@ -331,7 +331,7 @@ class MyStudentsViewController: UITableViewController, UISearchResultsUpdating {
         var profileImageView  : UIImageView = {
             let imageView = UIImageView()
             imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.image = UIImage(named: "blank_image")
+            imageView.image = UIImage(systemName: "person.circle")
             
             imageView.layer.cornerRadius = 30
             imageView.layer.masksToBounds = true
