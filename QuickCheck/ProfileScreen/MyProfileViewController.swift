@@ -58,14 +58,27 @@ class MyProfileViewController: UIViewController, UIImagePickerControllerDelegate
     
     @objc func handleLogout(){
         // Logging out the user
-        do{
-            try Auth.auth().signOut()
-        } catch let error{
-            print(error)
-        }
-        // Gping back to Login page
-        let loginPage = ViewController()
-        present(loginPage, animated : true, completion : nil)
+        // Show the alert with a confirmation action for logging out
+        self.showLogoutAlert(AlertTitle: "Log Out", Message: "Are you sure you want to log out?", confirmAction: {
+            // Remove the user token and synchronize UserDefaults
+            UserDefaults.standard.removeObject(forKey: "userToken")
+            UserDefaults.standard.synchronize()
+
+            // Sign out the user from Firebase
+            do {
+                try Auth.auth().signOut()
+            } catch let error {
+                print("Error signing out: \(error.localizedDescription)")
+            }
+
+            // Reset the root view controller to the login screen
+            let loginPage = ViewController()
+            let navigationController = UINavigationController(rootViewController: loginPage)
+            if let window = UIApplication.shared.windows.first {
+                window.rootViewController = navigationController
+                window.makeKeyAndVisible()
+            }
+        })
     }
     
     
