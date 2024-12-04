@@ -18,6 +18,7 @@ class MyProfileViewController: UIViewController, UIImagePickerControllerDelegate
     var userType = "", currentUserId = ""
     var UserName, PhoneNumber, SchoolName, AboutMe, ProfilePath : String?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +35,51 @@ class MyProfileViewController: UIViewController, UIImagePickerControllerDelegate
         setupViews()
         fetchDataFromDB()
     }
+    
+    let idLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "ID"
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = .gray
+        return label
+    }()
+    
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Name"
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = .gray
+        return label
+    }()
+
+    let schoolLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "School"
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = .gray
+        return label
+    }()
+
+    let phoneLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Phone Number"
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = .gray
+        return label
+    }()
+
+    let aboutLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "About Me"
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = .gray
+        return label
+    }()
 
 
     override func viewWillAppear(_ animated: Bool) {
@@ -96,9 +142,8 @@ class MyProfileViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     // Gets the data of current user from the Firebase
-    func fetchDataFromDB(){
+    func fetchDataFromDB() {
         let ref : DatabaseReference = Database.database().reference()
-        
         ref.child(userType).child(currentUserId).observeSingleEvent(of: .value, with: {(snapshot) in
             let value = snapshot.value as? NSDictionary
             self.UserName = value?["user_name"] as? String ?? ""
@@ -106,10 +151,11 @@ class MyProfileViewController: UIViewController, UIImagePickerControllerDelegate
             self.SchoolName = value?["school_name"] as? String ?? ""
             self.AboutMe = value?["about_me"] as? String ?? ""
             self.ProfilePath = value?["picture_path"] as? String ?? ""
-            
+            self.studentIdText.text = self.currentUserId  // Set the student ID
             self.setDataIntoViews()
         })
     }
+
     
     
     // Sets the data into the Views
@@ -305,6 +351,25 @@ class MyProfileViewController: UIViewController, UIImagePickerControllerDelegate
         return view
     }()
     
+    // Student ID text field and divider
+    var studentIdText : UITextField = {
+        let view = UITextField()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.placeholder = "Student ID"
+        view.isEnabled = false  // Make it read-only
+        view.textColor = .gray  // Visual indication that it's non-editable
+        view.adjustsFontSizeToFitWidth = true
+        return view
+    }()
+
+    let studentIdDivider : UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.darkGray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    
     // Company name text field and divider
     var schoolNameText : UITextField = {
         let view = UITextField()
@@ -440,29 +505,69 @@ class MyProfileViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     
-    func arrangeTextFields(){
+    func arrangeTextFields() {
         stackView.addArrangedSubview(textFieldsBaseView)
-        
         textFieldsBaseView.addSubview(textFieldStackView)
-        textFieldStackView.topAnchor.constraint(equalTo: textFieldsBaseView.topAnchor, constant: 8).isActive = true
-        textFieldStackView.bottomAnchor.constraint(equalTo: textFieldsBaseView.bottomAnchor, constant: -8).isActive = true
-        textFieldStackView.leftAnchor.constraint(equalTo: textFieldsBaseView.leftAnchor, constant: 8).isActive = true
-        textFieldStackView.rightAnchor.constraint(equalTo: textFieldsBaseView.rightAnchor, constant: -8).isActive = true
         
-        textFieldStackView.addArrangedSubview(usernameText)
-        textFieldStackView.addArrangedSubview(usernameDivider)
-        usernameDivider.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        // Setup constraints for textFieldStackView
+        NSLayoutConstraint.activate([
+            textFieldStackView.topAnchor.constraint(equalTo: textFieldsBaseView.topAnchor, constant: 8),
+            textFieldStackView.bottomAnchor.constraint(equalTo: textFieldsBaseView.bottomAnchor, constant: -8),
+            textFieldStackView.leftAnchor.constraint(equalTo: textFieldsBaseView.leftAnchor, constant: 8),
+            textFieldStackView.rightAnchor.constraint(equalTo: textFieldsBaseView.rightAnchor, constant: -8)
+        ])
+        let idContainer = createFieldContainer(label: idLabel, field: studentIdText, divider: studentIdDivider)
+        textFieldStackView.addArrangedSubview(idContainer)
         
-        textFieldStackView.addArrangedSubview(schoolNameText)
-        textFieldStackView.addArrangedSubview(schoolNameDivider)
-        schoolNameDivider.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        // Name field with label
+        let nameContainer = createFieldContainer(label: nameLabel, field: usernameText, divider: usernameDivider)
+        textFieldStackView.addArrangedSubview(nameContainer)
         
-        textFieldStackView.addArrangedSubview(phoneNumberText)
-        textFieldStackView.addArrangedSubview(phoneNumberDivider)
-        phoneNumberDivider.heightAnchor.constraint(equalToConstant: 1).isActive  = true
+        // School field with label
+        let schoolContainer = createFieldContainer(label: schoolLabel, field: schoolNameText, divider: schoolNameDivider)
+        textFieldStackView.addArrangedSubview(schoolContainer)
         
-        textFieldStackView.addArrangedSubview(aboutMeText)
+        // Phone field with label
+        let phoneContainer = createFieldContainer(label: phoneLabel, field: phoneNumberText, divider: phoneNumberDivider)
+        textFieldStackView.addArrangedSubview(phoneContainer)
         
+        // About field with label
+        let aboutContainer = createFieldContainer(label: aboutLabel, field: aboutMeText, divider: nil)
+        textFieldStackView.addArrangedSubview(aboutContainer)
     }
+
+    // Helper function to create consistent field containers
+    private func createFieldContainer(label: UILabel, field: UITextField, divider: UIView?) -> UIView {
+        let container = UIView()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        
+        container.addSubview(label)
+        container.addSubview(field)
+        
+        NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: container.topAnchor, constant: 4),
+            label.leftAnchor.constraint(equalTo: container.leftAnchor),
+            
+            field.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 4),
+            field.leftAnchor.constraint(equalTo: container.leftAnchor),
+            field.rightAnchor.constraint(equalTo: container.rightAnchor)
+        ])
+        
+        if let divider = divider {
+            container.addSubview(divider)
+            NSLayoutConstraint.activate([
+                divider.topAnchor.constraint(equalTo: field.bottomAnchor, constant: 4),
+                divider.leftAnchor.constraint(equalTo: container.leftAnchor),
+                divider.rightAnchor.constraint(equalTo: container.rightAnchor),
+                divider.heightAnchor.constraint(equalToConstant: 1),
+                divider.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -8)
+            ])
+        } else {
+            field.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -8).isActive = true
+        }
+        
+        return container
+    }
+
     
 }
