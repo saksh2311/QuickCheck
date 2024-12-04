@@ -281,7 +281,7 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
         let details = UIViewController.BasicDetails(UserName: CurrentUserDetails.UserName, UserID: CurrentUserDetails.UserID, UserType: CurrentUserDetails.UserType, ClassID: MyClassList[indexPath.row].ClassID, ClassName: MyClassList[indexPath.row].ClassName, PosterURL: MyClassList[indexPath.row].PosterURL)
         
         tabBarController.CurrentDetails = details
-        
+
         self.navigationController?.pushViewController(tabBarController, animated: true)
         
     }
