@@ -50,7 +50,12 @@ class MyStudentsViewController: UITableViewController, UISearchResultsUpdating {
         self.tabBarController?.title = "My Students"
         setupSearchBar()
         
-        let addClassButton : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "blank_image"), style: .plain, target: self, action: #selector(handleAddStudent))
+        let addClassButton = UIBarButtonItem(
+            image: UIImage(systemName: "person.fill.badge.plus"),
+            style: .plain,
+            target: self,
+            action: #selector(handleAddStudent)
+        )
 
         self.tabBarController?.navigationItem.rightBarButtonItem = addClassButton
     }
