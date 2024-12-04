@@ -14,7 +14,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     let classHomeViewController : ClassHomeViewController = ClassHomeViewController()
     let QRCodeViewController : GenerateQRCodeViewController = GenerateQRCodeViewController()
     let MyStudentViewController : MyStudentsViewController = MyStudentsViewController()
-    let ProfileViewController : MyProfileViewController = MyProfileViewController()
 
     
     override func viewDidLoad() {
@@ -81,13 +80,9 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         myStudentTab.tabBarItem.image = UIImage(systemName: "person.3.fill")
 
         // My profile viewController
-        ProfileViewController.CurrentDetails = CurrentDetails
-        let profileTab = UINavigationController(rootViewController: ProfileViewController)
-        profileTab.tabBarItem.title = "My Profile"
-        profileTab.tabBarItem.image = UIImage(systemName: "person.crop.circle")
         
         
-        viewControllers = [classHomeTab, qrCodeTab, myStudentTab, profileTab]
+        viewControllers = [classHomeTab, qrCodeTab, myStudentTab]
     }
     
     
@@ -106,14 +101,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         myAttendanceTab.tabBarItem.title = "My Attendance"
         myAttendanceTab.tabBarItem.image = UIImage(systemName: "checkmark.rectangle.fill")
         
-        
-        ProfileViewController.CurrentDetails = CurrentDetails
-        let profileTab = UINavigationController(rootViewController: ProfileViewController)
-        profileTab.tabBarItem.title = "My Profile"
-        profileTab.tabBarItem.image = UIImage(systemName: "person.crop.circle")
-        
-        
-         viewControllers = [myAttendanceTab, qrScannerTab, profileTab]
+         viewControllers = [myAttendanceTab, qrScannerTab]
     }
     
 

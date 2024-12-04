@@ -29,14 +29,13 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
     
     var MyClassList = [ClassDetails]()
     
-       
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         self.collectionView!.register(myCustomCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         // If user is not logged in
         if Auth.auth().currentUser?.uid == nil {
-            perform(#selector(logoutPressed), with: nil, afterDelay: 0)
+            
         }
         else{
             
@@ -47,10 +46,13 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
             
             let addClassButton : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAddClass))
+            let config = UIImage.SymbolConfiguration(weight: .bold)
+            let personImage = UIImage(systemName: "person.circle.fill")?
+                    .withConfiguration(config)
+                    .withTintColor(.black, renderingMode: .alwaysOriginal)
+            let profileButton : UIBarButtonItem = UIBarButtonItem(image: personImage, style: .plain, target: self, action: #selector(handleProfile))
             
-            let logoutButton : UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "logout_icon"), style: .plain, target: self, action: #selector(logoutPressed))
-            
-            self.navigationItem.leftBarButtonItem = logoutButton
+            self.navigationItem.leftBarButtonItem = profileButton
             self.navigationItem.rightBarButtonItem = addClassButton
             
         }
@@ -220,26 +222,12 @@ class MyClassesViewController: UICollectionViewController, UICollectionViewDeleg
         }
     }
     
-    // Logout button handler
-    @objc func logoutPressed() {
-        // Show the alert with a confirmation action for logging out
-        self.showLogoutAlert(AlertTitle: "Log Out", Message: "Are you sure you want to log out?", confirmAction: {
-            // This closure gets called if the user confirms the log out
-            
-            // Remove the user token and synchronize UserDefaults
-            UserDefaults.standard.removeObject(forKey: "userToken")
-            UserDefaults.standard.synchronize()
-
-            // Sign out the user from Firebase
-            do {
-                try Auth.auth().signOut()  // Sign out from Firebase
-            } catch let error {
-                print("Error signing out: \(error.localizedDescription)")
-            }
-
-            // Navigate back to the root view controller (login screen)
-            self.navigationController?.popToRootViewController(animated: true)
-        })
+    // Add handler for profile button
+    @objc func handleProfile() {
+        let profileVC = MyProfileViewController()
+        let basicDetails = BasicDetails(UserName: self.CurrentUserDetails.UserName, UserID: self.CurrentUserDetails.UserID, UserType: self.CurrentUserDetails.UserType)
+        profileVC.CurrentDetails = basicDetails
+        self.navigationController?.pushViewController(profileVC, animated: true)
     }
 
     
