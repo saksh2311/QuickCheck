@@ -573,7 +573,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "cs5520-ios-project.Group15";
+				PRODUCT_BUNDLE_IDENTIFIER = "cs5520-ios-project.Team15";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 4.2;
@@ -611,7 +611,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "cs5520-ios-project.Group15";
+				PRODUCT_BUNDLE_IDENTIFIER = "cs5520-ios-project.Team15";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 4.2;
