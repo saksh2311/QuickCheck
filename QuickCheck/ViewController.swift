@@ -284,7 +284,10 @@ class ViewController: UIViewController {
         view.placeholder = "Username"
         view.adjustsFontSizeToFitWidth = true
         view.keyboardType = UIKeyboardType.emailAddress
-
+        view.attributedPlaceholder = NSAttributedString(
+                string: "Username",
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
+            )
         return view
     }()
     
@@ -301,6 +304,11 @@ class ViewController: UIViewController {
         view.placeholder = "Password"
         view.adjustsFontSizeToFitWidth = true
         view.isSecureTextEntry = true
+        
+        // Set placeholder text color
+        view.attributedPlaceholder = NSAttributedString(
+                string: "Password",
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         return view
     }()
     
@@ -385,7 +393,7 @@ class ViewController: UIViewController {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.textAlignment = .center
-        view.text = "New user? then create your new account"
+        view.text = "New user? Create your new account"
         view.numberOfLines = 0
         view.textColor = UIColor.white
         return view
@@ -397,7 +405,7 @@ class ViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.setTitle("Register", for: .normal)
         view.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
-        view.setTitleColor(UIColor.green, for: .normal)
+        view.setTitleColor(UIColor.blue, for: .normal)
         return view
     }()
     
