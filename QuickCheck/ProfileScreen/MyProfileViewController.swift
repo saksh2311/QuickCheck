@@ -160,37 +160,41 @@ class MyProfileViewController: UIViewController, UIImagePickerControllerDelegate
         }
         
         // Check if new image is uploaded
-        if profileImageView.image == #imageLiteral(resourceName: "blank_profile") {
-            print("No new image uploaded")
-            ref.child("picture_path").setValue("No_image")
-            UIViewController.removeSpinner(spinner: loadingScreen)
-        } else {
-            // Now upload the profile image
+        if profileImageView.image != UIImage(named: "blank_profile") && profileImageView.image != UIImage(systemName: "person.circle.fill") {
             let storageRef = Storage.storage().reference().child("profile_images").child(profileImageName)
             
-            if let uploadImage = self.profileImageView.image!.jpegData(compressionQuality: 0.1) {
-                storageRef.putData(uploadImage, metadata: nil) { (metadata, error) in
+            if let uploadImage = profileImageView.image?.jpegData(compressionQuality: 0.5) {
+                let metadata = StorageMetadata()
+                metadata.contentType = "image/jpeg"
+                
+                storageRef.putData(uploadImage, metadata: metadata) { (metadata, error) in
                     if let error = error {
-                        print(error)
+                        print("Error uploading image: \(error.localizedDescription)")
                         UIViewController.removeSpinner(spinner: loadingScreen)
                         return
                     }
                     
-                    // Get download URL using the new method
                     storageRef.downloadURL { (url, error) in
                         if let error = error {
-                            print(error)
+                            print("Error getting download URL: \(error.localizedDescription)")
                             UIViewController.removeSpinner(spinner: loadingScreen)
                             return
                         }
                         
                         if let imageURL = url?.absoluteString {
-                            ref.child("picture_path").setValue(imageURL)
-                            UIViewController.removeSpinner(spinner: loadingScreen)
+                            ref.child("picture_path").setValue(imageURL) { (error, _) in
+                                UIViewController.removeSpinner(spinner: loadingScreen)
+                                if let error = error {
+                                    print("Error saving image URL: \(error.localizedDescription)")
+                                }
+                            }
                         }
                     }
                 }
             }
+        } else {
+            ref.child("picture_path").setValue("No_image")
+            UIViewController.removeSpinner(spinner: loadingScreen)
         }
     }
     
@@ -200,21 +204,13 @@ class MyProfileViewController: UIViewController, UIImagePickerControllerDelegate
         dismiss(animated: true, completion: nil)
     }
     // Image picker functions
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        print("Got the image")
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         dismiss(animated: true, completion: nil)
+        var selectedImageFromPicker: UIImage?
         
-        var selectedImageFromPicker : UIImage?
-        
-        // Check if image is edited
-        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
-            print("Got edited image")
+        if let editedImage = info[.editedImage] as? UIImage {
             selectedImageFromPicker = editedImage
-        }
-            
-            // If not take the original image
-        else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage{
-            print("Got original image")
+        } else if let originalImage = info[.originalImage] as? UIImage {
             selectedImageFromPicker = originalImage
         }
         
@@ -252,16 +248,15 @@ class MyProfileViewController: UIViewController, UIImagePickerControllerDelegate
     
     
     // Profile ImageVIew
-    lazy var profileImageView : UIImageView = {
+    lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleToFill
-        imageView.image = UIImage(named: "blank_image")
-        
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.image = UIImage(named: "blank_profile") ?? UIImage(systemName: "person.circle.fill")
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileTapped))
         imageView.addGestureRecognizer(tap)
         imageView.isUserInteractionEnabled = true
-        
         return imageView
     }()
     
