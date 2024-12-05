@@ -15,14 +15,12 @@ class GenerateQRCodeViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     let classSizes = ["  Small (10x10 meters)  ", "  Medium (50x50 meters)  ", "  Large (100x100 meters)  "]
     let classSizesLookup = ["Small", "Medium", "Large"]
-    
     let validityTimes = ["1 min", "5 mins", "10 mins", "15 mins", "30 mins", "60 mins"]
-    
     var CurrentDetails : UIViewController.BasicDetails?
     
-    
-    let locationManager = CLLocationManager()
-    var longitude_String = "" , latitude_String = ""
+    private let locationManager = CLLocationManager()
+    private var longitude_String = ""
+    private var latitude_String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,13 +28,14 @@ class GenerateQRCodeViewController: UIViewController, UIPickerViewDelegate, UIPi
         self.navigationController?.navigationBar.barStyle = UIBarStyle.black
 
         view.backgroundColor = UIColor.darkGray
+        setupLocationManager()
         setupViews()
     }
 
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-         initiateLocationServices()
+        checkLocationAuthorization()
         self.tabBarController?.title = "QR Code"
         self.tabBarController?.navigationItem.rightBarButtonItem = nil
         self.tabBarController?.navigationItem.searchController = nil
@@ -47,6 +46,31 @@ class GenerateQRCodeViewController: UIViewController, UIPickerViewDelegate, UIPi
         super.viewWillDisappear(true)
         self.locationManager.stopUpdatingLocation()
     }
+    
+    private func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+    }
+        
+    private func checkLocationAuthorization() {
+        switch locationManager.authorizationStatus {
+            case .notDetermined:
+                locationManager.requestWhenInUseAuthorization()
+            case .authorizedWhenInUse, .authorizedAlways:
+                locationManager.startUpdatingLocation()
+            case .denied, .restricted:
+                showAlert(AlertTitle: "Location Service Error",
+                         Message: "Please enable location permissions for this app")
+            @unknown default:
+                break
+        }
+    }
+    // MARK: - CLLocationManagerDelegate
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        checkLocationAuthorization()
+    }
+    
+    
     
     // Location services initiater
     func initiateLocationServices(){
@@ -183,13 +207,11 @@ class GenerateQRCodeViewController: UIViewController, UIPickerViewDelegate, UIPi
     }
     
     
-    @objc func generateTapped(){
-
-        if(longitude_String == "" || latitude_String == "" || longitude_String == "0.0" || latitude_String == "0.0" ){
+    @objc func generateTapped() {
+        if longitude_String.isEmpty || latitude_String.isEmpty || longitude_String == "0.0" || latitude_String == "0.0" {
             self.showAlert(AlertTitle: "Location Service Error", Message: "There is some error with the location services. Please make sure to allow location permissions for this app")
-        }
-            
-        else{
+            }
+        else {
             addAttendanceToDB()
         }
     }
