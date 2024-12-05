@@ -26,6 +26,8 @@ class ClassHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.title = "Home"
+        
         self.edgesForExtendedLayout = []
         self.navigationController?.navigationBar.barStyle = .blackTranslucent
 
@@ -40,10 +42,11 @@ class ClassHomeViewController: UIViewController, UITableViewDelegate, UITableVie
 
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        self.tabBarController?.title = "Home"
-        self.tabBarController?.navigationItem.rightBarButtonItem = nil
-        self.tabBarController?.navigationItem.searchController = nil 
+        super.viewWillAppear(animated)
+        
+        // Set navigation items directly on the navigation item
+        self.navigationItem.rightBarButtonItem = nil
+        self.navigationItem.searchController = nil
     }
     
     func populateLectureDetails(){
@@ -269,17 +272,22 @@ class ClassHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     }()
     
     // Background class poster
-    let backgroundPosterImageView : UIImageView = {
+    let backgroundPosterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
         return imageView
     }()
     
     // scroll view
-    let scrollView : UIScrollView = {
+    let scrollView: UIScrollView = {
         let view = UIScrollView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.showsVerticalScrollIndicator = true
+        view.showsHorizontalScrollIndicator = false
+        view.alwaysBounceVertical = true
+        view.contentInsetAdjustmentBehavior = .never
         return view
     }()
     
@@ -500,88 +508,97 @@ class ClassHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     }()
     
     // Setting up the view
-    func setupView(){
-        
-        // Setting up background view
+    func setupView() {
+        // Setup content view for scroll view
+        let contentView = UIView()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+            
+            // Setting up background view first
         setupBackgroundView()
-        
-        //Setting scrollView
+            
+            // Setup scroll view
         view.addSubview(scrollView)
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        scrollView.addSubview(contentView)
+            
+            // ScrollView constraints
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: backgroundBaseView.bottomAnchor),
+            scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                
+            // Content view constraints
+            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            contentView.leftAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leftAnchor),
+            contentView.rightAnchor.constraint(equalTo: scrollView.contentLayoutGuide.rightAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor)
+        ])
+            
+        // Add base view to content view
+        contentView.addSubview(baseView)
+        NSLayoutConstraint.activate([
+            baseView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            baseView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8),
+            baseView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -8),
+            baseView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+        ])
         
-        // Adding place holder view
-        scrollView.addSubview(placeHolderView)
-        placeHolderView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        placeHolderView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 8).isActive = true
-        placeHolderView.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -8).isActive = true
-        placeHolderView.heightAnchor.constraint(equalTo: backgroundPosterImageView.heightAnchor, multiplier: 0.7).isActive = true
-
-    
-        // Adding main base view to the scrollView
-        scrollView.addSubview(baseView)
-        baseView.topAnchor.constraint(equalTo: placeHolderView.bottomAnchor, constant: 8).isActive = true
-        baseView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -8).isActive = true
-        baseView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        baseView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+      
         
-
-
         // Add stackview to baseView
         baseView.addSubview(stackView)
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: baseView.topAnchor, constant: 8),
+            stackView.leftAnchor.constraint(equalTo: baseView.leftAnchor, constant: 8),
+            stackView.rightAnchor.constraint(equalTo: baseView.rightAnchor, constant: -8),
+            stackView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -8)
+        ])
         
-        stackView.topAnchor.constraint(equalTo: baseView.topAnchor, constant: 8).isActive = true
-        stackView.leftAnchor.constraint(equalTo: baseView.leftAnchor, constant: 8).isActive = true
-        stackView.rightAnchor.constraint(equalTo: baseView.rightAnchor, constant: -8).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -8).isActive = true
-
-        // Add all other views to stackview
+        // Add all views to stackView
         stackView.addArrangedSubview(classNameLabel)
         stackView.addArrangedSubview(timestampLabel)
-
         stackView.addArrangedSubview(classDetailsDivider)
         classDetailsDivider.heightAnchor.constraint(equalToConstant: 1).isActive = true
-
-
+        
         // Add Course Details Views
         setupCourseDetailsViews()
         stackView.addArrangedSubview(courseDetailsBaseView)
         
-
         // Add table View
         stackView.addArrangedSubview(studentsAttendanceTableView)
-        studentsAttendanceTableView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        studentsAttendanceTableView.heightAnchor.constraint(equalToConstant: CGFloat(studentAttendanceList.count * 60)).isActive = true
+        
+        studentsAttendanceTableView.rowHeight = 60
+        studentsAttendanceTableView.isScrollEnabled = false
+        
         studentsAttendanceTableView.delegate = self
         studentsAttendanceTableView.dataSource = self
         studentsAttendanceTableView.separatorStyle = .none
         studentsAttendanceTableView.register(MyCustomStudentCell.self, forCellReuseIdentifier: "studentCell")
         
-        
-        stackView.addArrangedSubview(blankSpaceHolder)
-        blankSpaceHolder.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.7, constant: -300).isActive = true
-        
+        baseView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4).isActive = true
         baseView.backgroundColor = UIColor.white
-
     }
     
     // Setting up the background ImageView
-    func setupBackgroundView(){
-        // Add the background base view
+    func setupBackgroundView() {
         view.addSubview(backgroundBaseView)
         
-        backgroundBaseView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        backgroundBaseView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        backgroundBaseView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        backgroundBaseView.bottomAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            backgroundBaseView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            backgroundBaseView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            backgroundBaseView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            backgroundBaseView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3)
+        ])
         
-        // Add the background imageView
         backgroundBaseView.addSubview(backgroundPosterImageView)
-        backgroundPosterImageView.heightAnchor.constraint(equalTo: backgroundBaseView.heightAnchor, multiplier: 0.6).isActive = true
-        backgroundPosterImageView.topAnchor.constraint(equalTo: backgroundBaseView.topAnchor).isActive = true
-        backgroundPosterImageView.centerXAnchor.constraint(equalTo: backgroundBaseView.centerXAnchor).isActive = true
-        backgroundPosterImageView.widthAnchor.constraint(lessThanOrEqualTo: backgroundPosterImageView.heightAnchor, multiplier: 2.5).isActive = true
+        NSLayoutConstraint.activate([
+            backgroundPosterImageView.topAnchor.constraint(equalTo: backgroundBaseView.topAnchor),
+            backgroundPosterImageView.leadingAnchor.constraint(equalTo: backgroundBaseView.leadingAnchor),
+            backgroundPosterImageView.trailingAnchor.constraint(equalTo: backgroundBaseView.trailingAnchor),
+            backgroundPosterImageView.bottomAnchor.constraint(equalTo: backgroundBaseView.bottomAnchor)
+        ])
     }
     
     // Setting up Course Details Views
