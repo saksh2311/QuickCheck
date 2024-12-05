@@ -189,7 +189,7 @@ class MyStudentsViewController: UITableViewController, UISearchResultsUpdating {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
 
-        searchController.searchBar.barTintColor = UIColor.white
+        searchController.searchBar.barTintColor = UIColor.black
         searchController.searchBar.backgroundImage = UIImage()
         
         if searchKeyword != ""{
@@ -257,9 +257,10 @@ class MyStudentsViewController: UITableViewController, UISearchResultsUpdating {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! CustomStudentCell
+        let config = UIImage.SymbolConfiguration(hierarchicalColor: .black)
         
         var studentName, profilePath : String?
-        cell.profileImageView.image = UIImage(systemName: "person.circle")
+        cell.profileImageView.image = UIImage(systemName: "person.circle", withConfiguration: config)
         
         if isSearching{
             studentName = filteredStudentList[indexPath.row].StudentName
