@@ -183,7 +183,15 @@ class MyStudentsViewController: UITableViewController, UISearchResultsUpdating {
         searchController = UISearchController(searchResultsController: nil)
         self.tabBarController?.navigationItem.searchController = searchController
         self.tabBarController?.navigationItem.hidesSearchBarWhenScrolling = false
-        searchController.searchBar.placeholder = "Search Students"
+        searchController.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(
+            string: "Search for students enrolled in class",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
+        )
+        if let textField = searchController.searchBar.value(forKey: "searchField") as? UITextField,
+        let leftView = textField.leftView as? UIImageView {
+            leftView.image = leftView.image?.withRenderingMode(.alwaysTemplate)
+            leftView.tintColor = UIColor.gray
+        }
         searchController.searchResultsUpdater = self
         searchController.definesPresentationContext = true
         searchController.hidesNavigationBarDuringPresentation = false
